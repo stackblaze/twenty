@@ -177,19 +177,28 @@ export class MessageCampaignLifecycleService {
           select: { id: true },
         });
 
+        let settledCount = 0;
+
         // A workspace update reads back every row it touches to emit events and refuses beyond
         // QUERY_MAX_RECORDS, so a campaign-sized set has to be walked in batches.
         for (const idsChunk of chunk(
           queuedMessages.map((message) => message.id),
           QUERY_MAX_RECORDS,
         )) {
-          await messageRepository.update(
-            { id: In(idsChunk) },
+          // Still filtered on QUEUED: a send job can land between the read above and this write,
+          // and settling by id alone would report a delivered message as unsent.
+          const { affected } = await messageRepository.update(
+            {
+              id: In(idsChunk),
+              deliveryStatus: CAMPAIGN_MESSAGE_DELIVERY_STATUS.QUEUED,
+            },
             { deliveryStatus },
           );
+
+          settledCount += affected ?? 0;
         }
 
-        return queuedMessages.length;
+        return settledCount;
       },
       buildSystemAuthContext(workspaceId),
     );

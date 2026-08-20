@@ -40,6 +40,8 @@ type CampaignMessageRow = {
 };
 
 type MaterializeMessagesArgs = {
+  workspaceId: string;
+  emailingDomainId: string;
   campaignId: string;
   messageChannelId: string;
   fromAddress: string;
@@ -115,33 +117,16 @@ export class MessageCampaignMaterializationService {
         (recipient) => !existingMessageIds.has(recipient.messageId),
       );
 
-      if (recipientsToCreate.length > 0) {
-        await this.materializeMessages({
-          campaignId,
-          messageChannelId,
-          fromAddress: campaign.fromAddress?.primaryEmail ?? '',
-          subjectTemplate: campaign.subject ?? '',
-          bodyTemplate: campaign.bodyTemplate ?? '',
-          recipients: recipientsToCreate,
-        });
-      }
-
-      // Only the recipients this run created. A replay skips the ones an earlier run already
-      // materialized, whose send jobs it also already enqueued, so no recipient gets two jobs.
-      // Messages stranded by a run that died between materializing and enqueueing are picked up
-      // by the stuck-campaign sweeper instead.
-      await this.messageQueueService.bulkAdd<SendCampaignEmailJobData>(
-        SEND_CAMPAIGN_EMAIL_JOB,
-        recipientsToCreate.map((recipient) => ({
-          workspaceId,
-          campaignId,
-          messageId: recipient.messageId,
-          personId: recipient.personId,
-          recipientEmail: recipient.email,
-          emailingDomainId,
-        })),
-        { retryLimit: 3 },
-      );
+      await this.materializeAndEnqueue({
+        workspaceId,
+        campaignId,
+        messageChannelId,
+        emailingDomainId,
+        fromAddress: campaign.fromAddress?.primaryEmail ?? '',
+        subjectTemplate: campaign.subject ?? '',
+        bodyTemplate: campaign.bodyTemplate ?? '',
+        recipients: recipientsToCreate,
+      });
 
       await this.messageCampaignLifecycleService.finalizeCampaignIfComplete({
         workspaceId,
@@ -150,9 +135,11 @@ export class MessageCampaignMaterializationService {
     }, buildSystemAuthContext(workspaceId));
   }
 
-  async materializeMessages({
+  private async materializeAndEnqueue({
+    workspaceId,
     campaignId,
     messageChannelId,
+    emailingDomainId,
     fromAddress,
     subjectTemplate,
     bodyTemplate,
@@ -165,14 +152,16 @@ export class MessageCampaignMaterializationService {
       bodyTemplate,
       null,
     );
-    const rows = recipients.map((recipient) => ({
-      recipient,
-      messageId: recipient.messageId,
-      threadId: v4(),
-      temporaryExternalId: v4(),
-    }));
 
-    for (const rowsChunk of chunk(rows, CAMPAIGN_MATERIALIZATION_CHUNK_SIZE)) {
+    // Each chunk is enqueued as soon as it commits. A replay skips recipients an earlier run
+    // already materialized, so anything written but not yet enqueued gets no send job -- keeping
+    // that window to a single chunk bounds how many recipients one crash can strand. Enqueueing
+    // from stored rows instead would close it entirely, but without an atomic in-flight claim on
+    // the message it would send some recipients twice, which cannot be taken back.
+    for (const recipientsChunk of chunk(
+      recipients,
+      CAMPAIGN_MATERIALIZATION_CHUNK_SIZE,
+    )) {
       await this.insertChunk({
         campaignId,
         messageChannelId,
@@ -180,8 +169,26 @@ export class MessageCampaignMaterializationService {
         subjectTemplate,
         text,
         now,
-        rows: rowsChunk,
+        rows: recipientsChunk.map((recipient) => ({
+          recipient,
+          messageId: recipient.messageId,
+          threadId: v4(),
+          temporaryExternalId: v4(),
+        })),
       });
+
+      await this.messageQueueService.bulkAdd<SendCampaignEmailJobData>(
+        SEND_CAMPAIGN_EMAIL_JOB,
+        recipientsChunk.map((recipient) => ({
+          workspaceId,
+          campaignId,
+          messageId: recipient.messageId,
+          personId: recipient.personId,
+          recipientEmail: recipient.email,
+          emailingDomainId,
+        })),
+        { retryLimit: 3 },
+      );
     }
   }
 

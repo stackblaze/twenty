@@ -1,3 +1,5 @@
+import { assertUnreachable } from 'twenty-shared/utils';
+
 import {
   CAMPAIGN_MESSAGE_DELIVERY_STATUS,
   type CampaignMessageDeliveryStatus,
@@ -43,5 +45,7 @@ export const resolveCampaignSendFailure = (
         deliveryStatus: CAMPAIGN_MESSAGE_DELIVERY_STATUS.FAILED,
         shouldRetry: false,
       };
+    default:
+      return assertUnreachable(error.code);
   }
 };
