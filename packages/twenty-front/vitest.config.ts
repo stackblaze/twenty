@@ -4,6 +4,7 @@ import { playwright } from '@vitest/browser-playwright';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vitest/config';
+import { buildTesterHtmlWithServiceWorkerGuard } from './.storybook/buildTesterHtmlWithServiceWorkerGuard';
 
 const MINUTES_IN_MS = 60 * 1000;
 
@@ -55,6 +56,7 @@ export default defineConfig({
             headless: true,
             provider: playwright({}),
             instances: [{ browser: 'chromium' }],
+            testerHtmlPath: buildTesterHtmlWithServiceWorkerGuard(),
           },
           setupFiles: ['./.storybook/vitest.setup.ts'],
           testTimeout: 5 * MINUTES_IN_MS,

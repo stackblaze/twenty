@@ -1,7 +1,7 @@
 import { Globals } from '@react-spring/web';
 import { setProjectAnnotations } from '@storybook/react-vite';
 import { MotionGlobalConfig } from 'framer-motion';
-import * as projectAnnotations from './preview';
+import { waitForServiceWorkerToControlPage } from './waitForServiceWorkerToControlPage';
 
 MotionGlobalConfig.skipAnimations = true;
 Globals.assign({ skipAnimation: true });
@@ -14,6 +14,13 @@ disableCssAnimationsStyle.innerHTML = `*, *::before, *::after {
   transition-delay: 0s !important;
 }`;
 document.head.appendChild(disableCssAnimationsStyle);
+
+// msw reloads the page when its service worker is registered but not yet
+// controlling it, which vitest reports as "the iframe was reloaded during a
+// test" and which fails the whole shard. ./preview starts the worker while it
+// evaluates, so it may only be imported once the page is controlled.
+await waitForServiceWorkerToControlPage();
+const projectAnnotations = await import('./preview');
 
 // Pre-warm the dynamic imports used by lazy() story components so the
 // modules are cached before any test runs (avoids flaky timeouts and Argos
