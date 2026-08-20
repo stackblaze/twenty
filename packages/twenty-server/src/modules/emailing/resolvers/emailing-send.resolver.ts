@@ -29,6 +29,8 @@ import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.g
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
 import { EmailBillingService } from 'src/modules/emailing/services/email-billing.service';
 import { EmailingDomainSenderService } from 'src/modules/emailing/services/emailing-domain-sender.service';
+import { MessageCampaignAudienceService } from 'src/modules/emailing/services/message-campaign-audience.service';
+import { MessageCampaignLifecycleService } from 'src/modules/emailing/services/message-campaign-lifecycle.service';
 import { MessageCampaignService } from 'src/modules/emailing/services/message-campaign.service';
 
 @UseGuards(
@@ -46,6 +48,8 @@ export class EmailingSendResolver {
   constructor(
     private readonly emailingDomainSenderService: EmailingDomainSenderService,
     private readonly messageCampaignService: MessageCampaignService,
+    private readonly messageCampaignAudienceService: MessageCampaignAudienceService,
+    private readonly messageCampaignLifecycleService: MessageCampaignLifecycleService,
     private readonly emailGroupAccessService: EmailGroupAccessService,
     private readonly emailBillingService: EmailBillingService,
   ) {}
@@ -104,7 +108,7 @@ export class EmailingSendResolver {
   ): Promise<CancelMessageCampaignOutputDTO> {
     this.emailGroupAccessService.validateEmailGroupAccessOrThrow();
 
-    return this.messageCampaignService.cancelSending({
+    return this.messageCampaignLifecycleService.cancelCampaignOrThrow({
       workspaceId: currentWorkspace.id,
       userWorkspaceId,
       campaignId: input.campaignId,
@@ -143,7 +147,7 @@ export class EmailingSendResolver {
   ): Promise<CampaignAudiencePreviewDTO> {
     this.emailGroupAccessService.validateEmailGroupAccessOrThrow();
 
-    return this.messageCampaignService.previewAudience({
+    return this.messageCampaignAudienceService.previewAudience({
       workspaceId: currentWorkspace.id,
       userWorkspaceId,
       listId: input.listId,

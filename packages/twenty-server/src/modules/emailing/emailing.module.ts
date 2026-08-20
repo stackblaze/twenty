@@ -28,6 +28,10 @@ import { EmailingDomainSenderService } from 'src/modules/emailing/services/email
 import { MessageCampaignDraftService } from 'src/modules/emailing/services/message-campaign-draft.service';
 import { MessageCampaignRecoveryService } from 'src/modules/emailing/services/message-campaign-recovery.service';
 import { MessageCampaignStatisticsService } from 'src/modules/emailing/services/message-campaign-statistics.service';
+import { MessageCampaignAudienceService } from 'src/modules/emailing/services/message-campaign-audience.service';
+import { MessageCampaignDeliveryService } from 'src/modules/emailing/services/message-campaign-delivery.service';
+import { MessageCampaignLifecycleService } from 'src/modules/emailing/services/message-campaign-lifecycle.service';
+import { MessageCampaignMaterializationService } from 'src/modules/emailing/services/message-campaign-materialization.service';
 import { MessageCampaignService } from 'src/modules/emailing/services/message-campaign.service';
 import { MessageSuppressionService } from 'src/modules/emailing/services/message-suppression.service';
 import { UnsubscribeTopicService } from 'src/modules/emailing/services/unsubscribe-topic.service';
@@ -57,6 +61,10 @@ import { SaveCampaignTool } from 'src/modules/emailing/tools/save-campaign-tool'
     CampaignVariableService,
     EmailBillingService,
     MessageCampaignService,
+    MessageCampaignAudienceService,
+    MessageCampaignDeliveryService,
+    MessageCampaignLifecycleService,
+    MessageCampaignMaterializationService,
     MessageCampaignDraftService,
     MessageCampaignRecoveryService,
     MessageCampaignStatisticsService,
@@ -76,6 +84,8 @@ import { SaveCampaignTool } from 'src/modules/emailing/tools/save-campaign-tool'
   exports: [
     EmailingDomainSenderService,
     MessageCampaignService,
+    MessageCampaignDeliveryService,
+    MessageCampaignMaterializationService,
     MessageCampaignDraftService,
     MessageCampaignStatisticsService,
     MessageSuppressionService,

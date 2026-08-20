@@ -7,7 +7,7 @@ import { CAMPAIGN_SENDING_STALE_THRESHOLD_MS } from 'src/engine/core-modules/ema
 import { GlobalWorkspaceOrmManager } from 'src/engine/twenty-orm/global-workspace-datasource/global-workspace-orm.manager';
 import { buildSystemAuthContext } from 'src/engine/twenty-orm/utils/build-system-auth-context.util';
 import { MessageCampaignStatisticsService } from 'src/modules/emailing/services/message-campaign-statistics.service';
-import { MessageCampaignService } from 'src/modules/emailing/services/message-campaign.service';
+import { MessageCampaignLifecycleService } from 'src/modules/emailing/services/message-campaign-lifecycle.service';
 import { MessageCampaignWorkspaceEntity } from 'src/modules/emailing/standard-objects/message-campaign.workspace-entity';
 
 @Injectable()
@@ -16,7 +16,7 @@ export class MessageCampaignRecoveryService {
 
   constructor(
     private readonly globalWorkspaceOrmManager: GlobalWorkspaceOrmManager,
-    private readonly messageCampaignService: MessageCampaignService,
+    private readonly messageCampaignLifecycleService: MessageCampaignLifecycleService,
     private readonly messageCampaignStatisticsService: MessageCampaignStatisticsService,
   ) {}
 
@@ -80,10 +80,12 @@ export class MessageCampaignRecoveryService {
           // progressed for an hour, so they are failed to let the campaign reach a terminal state
           // rather than sitting in SENDING forever.
           const failedCount =
-            await this.messageCampaignService.failStalledQueuedMessages({
-              workspaceId,
-              campaignId,
-            });
+            await this.messageCampaignLifecycleService.failStalledQueuedMessages(
+              {
+                workspaceId,
+                campaignId,
+              },
+            );
 
           if (failedCount > 0) {
             this.logger.warn(
@@ -91,10 +93,12 @@ export class MessageCampaignRecoveryService {
             );
           }
 
-          await this.messageCampaignService.finalizeCampaignIfComplete({
-            workspaceId,
-            campaignId,
-          });
+          await this.messageCampaignLifecycleService.finalizeCampaignIfComplete(
+            {
+              workspaceId,
+              campaignId,
+            },
+          );
         },
         buildSystemAuthContext(workspaceId),
       );
@@ -102,14 +106,12 @@ export class MessageCampaignRecoveryService {
       return;
     }
 
-    await this.globalWorkspaceOrmManager.executeInWorkspaceContext(async () => {
-      const campaignRepository = await this.getCampaignRepository(workspaceId);
-
-      await campaignRepository.update(
-        { id: campaignId, status: MessageCampaignStatus.SENDING },
-        { status: MessageCampaignStatus.DRAFT },
-      );
-    }, buildSystemAuthContext(workspaceId));
+    await this.messageCampaignLifecycleService.transitionCampaignStatus({
+      workspaceId,
+      campaignId,
+      from: MessageCampaignStatus.SENDING,
+      to: MessageCampaignStatus.DRAFT,
+    });
 
     this.logger.warn(
       `Campaign ${campaignId} of workspace ${workspaceId} materialized no message and was released back to draft`,
