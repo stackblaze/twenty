@@ -18,15 +18,13 @@ import { Trans, useLingui } from '@lingui/react/macro';
 import { isNonEmptyString } from '@sniptt/guards';
 import { useMemo, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { slugify } from 'transliteration';
 import { type AiSdkPackage, isDataResidency } from 'twenty-shared/ai';
 import { SettingsPath } from 'twenty-shared/types';
 import { getSettingsPath } from 'twenty-shared/utils';
 import { InlineBanner, Section, useToast } from 'twenty-ui/components';
 import { IconPlus } from 'twenty-ui/icon';
-import { OrganizationAdornment } from '~/pages/settings/enterprise/components/OrganizationAdornment';
-
 type ModelsDevProvider = { id: string; modelCount: number; npm: AiSdkPackage };
 
 type FormValues = {
@@ -52,8 +50,6 @@ export const SettingsAdminNewAiProvider = () => {
   const [isCustomMode, setIsCustomMode] = useState(false);
   const {
     hasAccess: hasCustomAiProviderAccess,
-    gateDescription: customAiProviderGateDescription,
-    tooltipContent: customAiProviderTooltipContent,
   } = useCustomAiProviderAccess();
 
   const [addAiProvider] = useMutation(ADD_AI_PROVIDER, {
@@ -270,32 +266,10 @@ export const SettingsAdminNewAiProvider = () => {
         }
       >
         <SettingsPageContainer>
-          {!hasCustomAiProviderAccess && (
-            <InlineBanner
-              variant="compact"
-              color="danger"
-              message={customAiProviderGateDescription}
-              button={{
-                title: t`Activate`,
-                href: getSettingsPath(SettingsPath.AdminPanelOrganization),
-                render: (
-                  <Link
-                    to={getSettingsPath(SettingsPath.AdminPanelOrganization)}
-                  />
-                ),
-              }}
-            />
-          )}
-
           <Section.Root>
             <Section.Header
               title={t`Provider`}
               description={t`Select a known provider or create a custom one`}
-              adornment={
-                <OrganizationAdornment
-                  tooltipContent={customAiProviderTooltipContent}
-                />
-              }
             />
             <Select
               dropdownId="ai-provider-models-dev-select"

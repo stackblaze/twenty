@@ -3,7 +3,6 @@ import { isDefined } from 'twenty-shared/utils';
 import { BillingEntitlementKey } from 'src/engine/core-modules/billing/enums/billing-entitlement-key.enum';
 import { type BillingSubscriptionService } from 'src/engine/core-modules/billing/services/billing-subscription.service';
 import { type BillingUsageLimitEntitlementProvider } from 'src/engine/core-modules/billing/services/billing-usage-limit-entitlement-provider.service';
-import { type EnterprisePlanService } from 'src/engine/core-modules/enterprise/services/enterprise-plan.service';
 import { buildSystemAuthContext } from 'src/engine/twenty-orm/utils/build-system-auth-context.util';
 import { type WorkspaceOrmManager } from 'src/engine/twenty-orm/workspace-orm.manager';
 import { type WorkspaceCacheService } from 'src/engine/workspace-cache/services/workspace-cache.service';
@@ -65,7 +64,6 @@ const isBillingEnabled = process.env.IS_BILLING_ENABLED === 'true';
     let workspaceCacheService: WorkspaceCacheService;
     let subscriptionService: BillingSubscriptionService;
     let usageLimitProvider: BillingUsageLimitEntitlementProvider;
-    let enterprisePlanService: EnterprisePlanService;
 
     const setUsageLimitEntitlement = async (value: boolean) => {
       await global.testDataSource.query(
@@ -99,9 +97,6 @@ const isBillingEnabled = process.env.IS_BILLING_ENABLED === 'true';
         getAppProviderByClassName<BillingUsageLimitEntitlementProvider>(
           'BillingUsageLimitEntitlementProvider',
         );
-      enterprisePlanService = getAppProviderByClassName<EnterprisePlanService>(
-        'EnterprisePlanService',
-      );
       originalEntitlements = await global.testDataSource.query(
         'SELECT value FROM core."billingEntitlement" WHERE "workspaceId" = $1 AND key = $2',
         [workspaceId, BillingEntitlementKey.USAGE_LIMIT],
@@ -109,7 +104,6 @@ const isBillingEnabled = process.env.IS_BILLING_ENABLED === 'true';
     });
 
     beforeEach(async () => {
-      jest.spyOn(enterprisePlanService, 'isValid').mockReturnValue(true);
       await setUsageLimitEntitlement(true);
       await refreshEntitlements();
     });
@@ -195,16 +189,6 @@ const isBillingEnabled = process.env.IS_BILLING_ENABLED === 'true';
         );
       },
     );
-
-    it('evaluates license validity again while the entitlement remains cached', async () => {
-      expect(
-        await usageLimitProvider.hasIntraWorkspaceLimitEntitlement(workspaceId),
-      ).toBe(true);
-      jest.spyOn(enterprisePlanService, 'isValid').mockReturnValue(false);
-      expect(
-        await usageLimitProvider.hasIntraWorkspaceLimitEntitlement(workspaceId),
-      ).toBe(false);
-    });
 
     it('propagates a cache outage rather than treating it as a missing entitlement', async () => {
       jest

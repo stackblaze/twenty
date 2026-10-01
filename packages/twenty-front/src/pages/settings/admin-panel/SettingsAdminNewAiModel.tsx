@@ -16,14 +16,13 @@ import { t } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { useMemo, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { SettingsPath } from 'twenty-shared/types';
 import { getSettingsPath, isDefined } from 'twenty-shared/utils';
-import { InlineBanner, Section, useToast } from 'twenty-ui/components';
+import { Section, useToast } from 'twenty-ui/components';
 import { IconPlus } from 'twenty-ui/icon';
 import { Checkbox, Switch } from 'twenty-ui/primitives/input';
 import { themeCssVariables } from 'twenty-ui/theme';
-import { OrganizationAdornment } from '~/pages/settings/enterprise/components/OrganizationAdornment';
 
 const StyledComboInputContainer = styled.div`
   display: flex;
@@ -97,8 +96,6 @@ export const SettingsAdminNewAiModel = () => {
   const [isCustomModelId, setIsCustomModelId] = useState(false);
   const {
     hasAccess: hasCustomAiProviderAccess,
-    gateDescription: customAiProviderGateDescription,
-    tooltipContent: customAiProviderTooltipContent,
   } = useCustomAiProviderAccess();
 
   const { data: providersData } = useQuery<GetAiProvidersResult>(
@@ -341,23 +338,6 @@ export const SettingsAdminNewAiModel = () => {
         }
       >
         <SettingsPageContainer>
-          {!hasCustomAiProviderAccess && (
-            <InlineBanner
-              variant="compact"
-              color="danger"
-              message={customAiProviderGateDescription}
-              button={{
-                title: t`Activate`,
-                href: getSettingsPath(SettingsPath.AdminPanelOrganization),
-                render: (
-                  <Link
-                    to={getSettingsPath(SettingsPath.AdminPanelOrganization)}
-                  />
-                ),
-              }}
-            />
-          )}
-
           <Section.Root>
             <Section.Header
               title={t`Model ID`}
@@ -365,11 +345,6 @@ export const SettingsAdminNewAiModel = () => {
                 showModelSelect
                   ? t`Select a known model or add a custom one`
                   : t`The model identifier used by the provider API`
-              }
-              adornment={
-                <OrganizationAdornment
-                  tooltipContent={customAiProviderTooltipContent}
-                />
               }
             />
             {showModelSelect ? (

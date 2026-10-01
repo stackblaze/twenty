@@ -3,7 +3,6 @@ import { type Repository } from 'typeorm';
 
 import { type ClickHouseService } from 'src/database/clickhouse/clickhouse.service';
 import { type BillingService } from 'src/engine/core-modules/billing/services/billing.service';
-import { type EnterprisePlanService } from 'src/engine/core-modules/enterprise/services/enterprise-plan.service';
 import { EventLogsService } from 'src/engine/core-modules/event-logs/event-logs.service';
 import { type UserWorkspaceEntity } from 'src/engine/core-modules/user-workspace/user-workspace.entity';
 
@@ -34,7 +33,6 @@ describe('EventLogsService', () => {
     service = new EventLogsService(
       { getMainClient: () => ({}), select } as unknown as ClickHouseService,
       { hasEntitlement: async () => true } as unknown as BillingService,
-      { isValid: () => true } as unknown as EnterprisePlanService,
       {} as Repository<UserWorkspaceEntity>,
     );
   });

@@ -1,10 +1,9 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { Test, type TestingModule } from '@nestjs/testing';
 
 import { AdminPanelAiProviderService } from 'src/engine/core-modules/admin-panel/services/admin-panel-ai-provider.service';
 import { MAX_SEATS_WITHOUT_ENTERPRISE_KEY } from 'src/engine/core-modules/enterprise/constants/max-seats-without-organization-key.constant';
-import { EnterpriseExceptionCode } from 'src/engine/core-modules/enterprise/enterprise.exception';
 import { CustomAiProviderAccessService } from 'src/engine/core-modules/enterprise/services/custom-ai-provider-access.service';
 import { EnterprisePlanService } from 'src/engine/core-modules/enterprise/services/enterprise-plan.service';
 import { TwentyConfigService } from 'src/engine/core-modules/twenty-config/twenty-config.service';
@@ -86,13 +85,11 @@ describe('AdminPanelAiProviderService', () => {
       expect(providers).toHaveProperty('my-gateway');
     });
 
-    it('refuses and persists nothing above the threshold without an enterprise key', async () => {
+    it('persists the provider above the former seat threshold', async () => {
       givenInstance({ seatCount: MAX_SEATS_WITHOUT_ENTERPRISE_KEY + 1 });
 
-      await expect(addProvider()).rejects.toMatchObject({
-        code: EnterpriseExceptionCode.ENTERPRISE_SEAT_THRESHOLD_EXCEEDED,
-      });
-      expect(twentyConfigService.set).not.toHaveBeenCalled();
+      await expect(addProvider()).resolves.toBe(true);
+      expect(providers).toHaveProperty('my-gateway');
     });
 
     it('persists the provider above the threshold with a valid enterprise key', async () => {
@@ -133,17 +130,16 @@ describe('AdminPanelAiProviderService', () => {
   });
 
   describe('addModelToProvider', () => {
-    it('refuses above the threshold without an enterprise key', async () => {
+    it('adds a model above the former seat threshold', async () => {
       givenInstance({ seatCount: MAX_SEATS_WITHOUT_ENTERPRISE_KEY + 1 });
+      await addProvider();
 
       await expect(
         service.addModelToProvider({
           providerName: 'my-gateway',
           modelConfig: { name: 'gpt-4o', label: 'GPT-4o' },
         }),
-      ).rejects.toMatchObject({
-        code: EnterpriseExceptionCode.ENTERPRISE_SEAT_THRESHOLD_EXCEEDED,
-      });
+      ).resolves.toBe(true);
     });
   });
 
@@ -162,7 +158,7 @@ describe('AdminPanelAiProviderService', () => {
       givenInstance({ seatCount: 42 });
 
       await expect(service.getCustomAiProviderAccess()).resolves.toEqual({
-        hasAccess: false,
+        hasAccess: true,
         seatCount: 42,
         seatThreshold: MAX_SEATS_WITHOUT_ENTERPRISE_KEY,
       });

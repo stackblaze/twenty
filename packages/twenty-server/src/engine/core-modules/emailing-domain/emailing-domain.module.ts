@@ -26,7 +26,6 @@ import { UnsubscribeContentService } from 'src/engine/core-modules/emailing-doma
 import { DmarcRecordService } from 'src/engine/core-modules/emailing-domain/services/dmarc-record.service';
 import { UnsubscribeHostnameService } from 'src/engine/core-modules/emailing-domain/services/unsubscribe-hostname.service';
 import { UnsubscribeTokenService } from 'src/engine/core-modules/emailing-domain/services/unsubscribe-token.service';
-import { EnterpriseModule } from 'src/engine/core-modules/enterprise/enterprise.module';
 import { FeatureFlagModule } from 'src/engine/core-modules/feature-flag/feature-flag.module';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
 import { SecretEncryptionModule } from 'src/engine/core-modules/secret-encryption/secret-encryption.module';
@@ -42,7 +41,6 @@ import { provideWorkspaceScopedRepository } from 'src/engine/twenty-orm/workspac
     DnsManagerModule,
     SecretEncryptionModule,
     BillingModule,
-    EnterpriseModule,
   ],
   exports: [
     EmailingDomainService,

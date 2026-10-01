@@ -1,11 +1,10 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppTokenEntity } from 'src/engine/core-modules/app-token/app-token.entity';
 import { EnterpriseKeyValidationCronJob } from 'src/engine/core-modules/enterprise/cron/jobs/organization-key-validation.cron.job';
-import { EnterpriseResolver } from 'src/engine/core-modules/enterprise/enterprise.resolver';
 import { CustomAiProviderAccessService } from 'src/engine/core-modules/enterprise/services/custom-ai-provider-access.service';
 import { EnterprisePlanService } from 'src/engine/core-modules/enterprise/services/enterprise-plan.service';
 import { TwentyConfigModule } from 'src/engine/core-modules/twenty-config/twenty-config.module';
@@ -27,7 +26,6 @@ import { WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.ent
     EnterprisePlanService,
     CustomAiProviderAccessService,
     EnterpriseKeyValidationCronJob,
-    EnterpriseResolver,
   ],
   exports: [
     EnterprisePlanService,

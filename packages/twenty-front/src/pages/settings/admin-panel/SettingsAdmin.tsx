@@ -19,8 +19,11 @@ export const SettingsAdmin = () => {
     tabs.map((tab) => tab.id),
   );
 
-  if (location.hash === '#enterprise') {
-    return <Navigate to={{ ...location, hash: '#organization' }} replace />;
+  if (
+    location.hash === '#enterprise' ||
+    location.hash === '#organization'
+  ) {
+    return <Navigate to={{ ...location, hash: '#general' }} replace />;
   }
 
   return (

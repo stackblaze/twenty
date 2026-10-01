@@ -1,12 +1,9 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 export const isEntitlementActive = ({
-  hasValidEnterprisePlan,
   isBillingEnabled,
   stripeEntitlementValue,
 }: {
-  hasValidEnterprisePlan: boolean;
   isBillingEnabled: boolean;
   stripeEntitlementValue: boolean;
-}): boolean =>
-  hasValidEnterprisePlan && (!isBillingEnabled || stripeEntitlementValue);
+}): boolean => !isBillingEnabled || stripeEntitlementValue;

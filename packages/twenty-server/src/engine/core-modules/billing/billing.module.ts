@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -42,7 +42,6 @@ import { WorkspaceCurrentBillingSubscriptionCacheService } from 'src/engine/core
 import { StripeModule } from 'src/engine/core-modules/billing/stripe/stripe.module';
 import { CacheLockModule } from 'src/engine/core-modules/cache-lock/cache-lock.module';
 import { WorkspaceDomainsModule } from 'src/engine/core-modules/domain/workspace-domains/workspace-domains.module';
-import { EnterpriseModule } from 'src/engine/core-modules/enterprise/enterprise.module';
 import { FeatureFlagEntity } from 'src/engine/core-modules/feature-flag/feature-flag.entity';
 import { FeatureFlagModule } from 'src/engine/core-modules/feature-flag/feature-flag.module';
 import { MessageQueueModule } from 'src/engine/core-modules/message-queue/message-queue.module';
@@ -80,7 +79,6 @@ import { WorkspaceCacheModule } from 'src/engine/workspace-cache/workspace-cache
       FeatureFlagEntity,
     ]),
     MetricsModule,
-    EnterpriseModule,
     UsageLimitModule,
     WorkspaceIteratorModule,
   ],

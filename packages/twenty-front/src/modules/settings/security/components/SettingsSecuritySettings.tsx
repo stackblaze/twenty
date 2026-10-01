@@ -2,7 +2,6 @@ import { currentWorkspaceState } from '@/auth/states/currentWorkspaceState';
 import { authProvidersState } from '@/client-config/states/authProvidersState';
 import { isClickHouseConfiguredState } from '@/client-config/states/isClickHouseConfiguredState';
 import { isMultiWorkspaceEnabledState } from '@/client-config/states/isMultiWorkspaceEnabledState';
-import { SettingsEnterpriseFeatureGateCard } from '@/settings/components/SettingsEnterpriseFeatureGateCard';
 import { SettingsOptionCardContentButton } from '@/settings/components/SettingsOptions/SettingsOptionCardContentButton';
 import { SettingsOptionCardContentCounter } from '@/settings/components/SettingsOptions/SettingsOptionCardContentCounter';
 import { SettingsRoleDefaultRole } from '@/settings/roles/components/SettingsRolesDefaultRole';
@@ -26,8 +25,6 @@ import { Card } from 'twenty-ui/primitives/surfaces';
 import { themeCssVariables } from 'twenty-ui/theme';
 import { useDebouncedCallback } from 'use-debounce';
 import { UpdateWorkspaceDocument } from '~/generated-metadata/graphql';
-import { OrganizationAdornment } from '~/pages/settings/enterprise/components/OrganizationAdornment';
-
 import { getToastOptionsFromError } from '@/error-handler/utils/getToastOptionsFromError';
 
 const StyledContainer = styled.div`
@@ -138,9 +135,7 @@ export const SettingsSecuritySettings = () => {
     !hasDirectAuthEnabled &&
     hasBypassProviderAvailable;
 
-  const hasEnterpriseAccess =
-    currentWorkspace?.hasValidEnterpriseValidityToken === true;
-  const isEventLogsEnabled = hasEnterpriseAccess && isClickHouseConfigured;
+  const isEventLogsEnabled = isClickHouseConfigured;
 
   return (
     <>
@@ -151,7 +146,6 @@ export const SettingsSecuritySettings = () => {
             <Section.Header
               title={t`SSO`}
               description={t`Configure an SSO connection`}
-              adornment={<OrganizationAdornment />}
             />
             <SettingsSsoIdentitiesProvidersListCard />
           </Section.Root>
@@ -201,36 +195,27 @@ export const SettingsSecuritySettings = () => {
           <Section.Header
             title={t`Audit Logs`}
             description={t`Configure how long audit logs are retained`}
-            adornment={<OrganizationAdornment />}
           />
-          {hasEnterpriseAccess ? (
-            <Card.Root rounded>
-              {isEventLogsEnabled ? (
-                <SettingsOptionCardContentCounter
-                  Icon={IconClockHour8}
-                  title={t`Log retention`}
-                  description={t`Number of days to retain audit logs (30-1095 days)`}
-                  value={currentWorkspace?.eventLogRetentionDays ?? 90}
-                  onChange={handleEventLogRetentionDaysChange}
-                  minValue={30}
-                  maxValue={1095}
-                  showButtons={false}
-                />
-              ) : (
-                <SettingsOptionCardContentButton
-                  Icon={IconHistory}
-                  title={t`Audit Logs`}
-                  description={t`ClickHouse is required for audit logs. Contact your administrator.`}
-                />
-              )}
-            </Card.Root>
-          ) : (
-            <SettingsEnterpriseFeatureGateCard
-              title={t`Organization feature`}
-              description={t`Upgrade to Organization to access audit logs.`}
-              buttonTitle={t`Activate`}
-            />
-          )}
+          <Card.Root rounded>
+            {isEventLogsEnabled ? (
+              <SettingsOptionCardContentCounter
+                Icon={IconClockHour8}
+                title={t`Log retention`}
+                description={t`Number of days to retain audit logs (30-1095 days)`}
+                value={currentWorkspace?.eventLogRetentionDays ?? 90}
+                onChange={handleEventLogRetentionDaysChange}
+                minValue={30}
+                maxValue={1095}
+                showButtons={false}
+              />
+            ) : (
+              <SettingsOptionCardContentButton
+                Icon={IconHistory}
+                title={t`Audit Logs`}
+                description={t`ClickHouse is required for audit logs. Contact your administrator.`}
+              />
+            )}
+          </Card.Root>
         </Section.Root>
         <Section.Root>
           <Section.Header

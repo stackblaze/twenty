@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { Test, type TestingModule } from '@nestjs/testing';
 
@@ -7,14 +7,11 @@ import { CUSTOM_AI_PROVIDER_ACCESS_RETRY_INTERVAL_MS } from 'src/engine/core-mod
 import { MAX_SEATS_WITHOUT_ENTERPRISE_KEY } from 'src/engine/core-modules/enterprise/constants/max-seats-without-organization-key.constant';
 import { CustomAiProviderAccessService } from 'src/engine/core-modules/enterprise/services/custom-ai-provider-access.service';
 import { EnterprisePlanService } from 'src/engine/core-modules/enterprise/services/enterprise-plan.service';
-import { TwentyConfigService } from 'src/engine/core-modules/twenty-config/twenty-config.service';
 
 describe('CustomAiProviderAccessService', () => {
   let service: CustomAiProviderAccessService;
 
-  const twentyConfigService = { get: jest.fn() };
   const enterprisePlanService = {
-    isValid: jest.fn(),
     getBillableSeatCount: jest.fn(),
   };
 
@@ -39,14 +36,11 @@ describe('CustomAiProviderAccessService', () => {
     jest.clearAllMocks();
     currentTime = START_TIME;
     jest.spyOn(Date, 'now').mockImplementation(() => currentTime);
-    twentyConfigService.get.mockReturnValue(false);
-    enterprisePlanService.isValid.mockReturnValue(false);
     givenSeatCount(1);
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         CustomAiProviderAccessService,
-        { provide: TwentyConfigService, useValue: twentyConfigService },
         { provide: EnterprisePlanService, useValue: enterprisePlanService },
       ],
     }).compile();
@@ -65,7 +59,7 @@ describe('CustomAiProviderAccessService', () => {
       givenSeatCount(MAX_SEATS_WITHOUT_ENTERPRISE_KEY + 1);
 
       await expect(service.computeAccess()).resolves.toEqual({
-        hasAccess: false,
+        hasAccess: true,
         seatCount: MAX_SEATS_WITHOUT_ENTERPRISE_KEY + 1,
         seatThreshold: MAX_SEATS_WITHOUT_ENTERPRISE_KEY,
       });
@@ -85,7 +79,7 @@ describe('CustomAiProviderAccessService', () => {
       service.getCachedHasAccess();
       await flushPendingRefresh();
 
-      expect(service.getCachedHasAccess()).toBe(false);
+      expect(service.getCachedHasAccess()).toBe(true);
     });
 
     it('counts seats once per refresh interval however often it is read', async () => {

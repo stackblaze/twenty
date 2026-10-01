@@ -4,14 +4,7 @@ import { SettingsAdminGeneral } from '@/settings/admin-panel/components/Settings
 import { SettingsAdminConfigVariables } from '@/settings/admin-panel/config-variables/components/SettingsAdminConfigVariables';
 import { SETTINGS_ADMIN_TABS } from '@/settings/admin-panel/constants/SettingsAdminTabs';
 import { SettingsAdminHealthStatus } from '@/settings/admin-panel/health-status/components/SettingsAdminHealthStatus';
-import { SettingsSectionSkeletonLoader } from '@/settings/components/SettingsSectionSkeletonLoader';
-import { lazy, Suspense } from 'react';
 
-const SettingsEnterprise = lazy(() =>
-  import('~/pages/settings/enterprise/SettingsEnterprise').then((module) => ({
-    default: module.SettingsEnterprise,
-  })),
-);
 export const SettingsAdminTabContent = ({
   activeTabId,
 }: {
@@ -28,12 +21,6 @@ export const SettingsAdminTabContent = ({
       return <SettingsAdminConfigVariables />;
     case SETTINGS_ADMIN_TABS.HEALTH_STATUS:
       return <SettingsAdminHealthStatus />;
-    case SETTINGS_ADMIN_TABS.ORGANIZATION:
-      return (
-        <Suspense fallback={<SettingsSectionSkeletonLoader />}>
-          <SettingsEnterprise isAdminPanelTab />
-        </Suspense>
-      );
     default:
       return null;
   }
