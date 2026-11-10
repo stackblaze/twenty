@@ -23,7 +23,6 @@ import {
   type EnterpriseLicenseInfo,
   type EnterpriseValidityPayload,
 } from 'src/engine/core-modules/enterprise/types/organization-key-payload.type';
-import { isValidityTokenReloadDue } from 'src/engine/core-modules/enterprise/utils/is-validity-token-reload-due.util';
 import { verifyEnterpriseJwt } from 'src/engine/core-modules/enterprise/utils/verify-enterprise-jwt.util';
 import {
   ConfigVariableException,
@@ -165,20 +164,6 @@ export class EnterprisePlanService implements OnModuleInit {
     return isDefined(this.cachedKeyPayload);
   }
 
-  private reloadValidityTokenIfStale(): void {
-    const isReloadDue = isValidityTokenReloadDue({
-      lastLoadStartedAt: this.lastValidityTokenLoadStartedAt,
-      didLastLoadFail: this.didLastValidityTokenLoadFail,
-      now: Date.now(),
-    });
-
-    if (!isReloadDue) {
-      return;
-    }
-
-    void this.loadValidityToken();
-  }
-
   private isCachedValidityPayloadValid(): boolean {
     if (!isDefined(this.cachedValidityPayload)) {
       return false;
@@ -187,32 +172,17 @@ export class EnterprisePlanService implements OnModuleInit {
     return this.cachedValidityPayload.exp > Math.floor(Date.now() / 1000);
   }
 
+  // Stackblaze fork: Organization features stay on without a twenty.com license key.
   hasValidEnterpriseValidityToken(): boolean {
-    this.reloadValidityTokenIfStale();
-
-    return this.isCachedValidityPayloadValid();
+    return true;
   }
 
   async isValidWithFreshToken(): Promise<boolean> {
-    if (this.isCachedValidityPayloadValid()) {
-      return true;
-    }
-
-    if (
-      isValidityTokenReloadDue({
-        lastLoadStartedAt: this.lastValidityTokenLoadStartedAt,
-        didLastLoadFail: this.didLastValidityTokenLoadFail,
-        now: Date.now(),
-      })
-    ) {
-      await this.loadValidityToken();
-    }
-
-    return this.isCachedValidityPayloadValid();
+    return true;
   }
 
   isValid(): boolean {
-    return this.hasValidEnterpriseValidityToken();
+    return true;
   }
 
   isValidEnterpriseKeyFormat(key: string): boolean {

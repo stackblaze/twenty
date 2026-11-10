@@ -92,8 +92,8 @@ describe('organization key validation schedule', () => {
     await job.handle(registeredJobData());
 
     expectSentrySchedule(toMinuteLevelCronPattern(pattern));
-    expect(enterprisePlanService.refreshValidityToken).toHaveBeenCalledTimes(1);
-    expect(enterprisePlanService.reportSeats).toHaveBeenCalledWith(2);
+    expect(enterprisePlanService.refreshValidityToken).not.toHaveBeenCalled();
+    expect(enterprisePlanService.reportSeats).not.toHaveBeenCalled();
   });
 
   it('keeps Sentry on the registered fallback after the server ID becomes available', async () => {
@@ -117,13 +117,10 @@ describe('organization key validation schedule', () => {
     expectSentrySchedule('0 4 * * *');
   });
 
-  it('still reports seats after a failed refresh', async () => {
-    enterprisePlanService.refreshValidityToken.mockRejectedValue(
-      new Error('Billing service temporarily unavailable'),
-    );
-
+  it('does not call twenty.com for a license refresh', async () => {
     await expect(job.handle(undefined)).resolves.toBeUndefined();
 
-    expect(enterprisePlanService.reportSeats).toHaveBeenCalledWith(2);
+    expect(enterprisePlanService.refreshValidityToken).not.toHaveBeenCalled();
+    expect(enterprisePlanService.reportSeats).not.toHaveBeenCalled();
   });
 });

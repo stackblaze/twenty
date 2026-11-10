@@ -192,8 +192,6 @@ export const SettingsEnterprise = ({
   const hasValidityToken =
     currentWorkspace?.hasValidEnterpriseValidityToken === true;
 
-  const hasOrphanedValidityToken = hasValidityToken && !hasSignedEnterpriseKey;
-
   const [fetchSubscriptionStatus] = useLazyQuery<{
     enterpriseSubscriptionStatus: SubscriptionStatus | null;
   }>(ENTERPRISE_SUBSCRIPTION_STATUS, { fetchPolicy: 'network-only' });
@@ -633,41 +631,14 @@ export const SettingsEnterprise = ({
       return null;
     }
 
-    if (hasOrphanedValidityToken) {
-      return (
-        <>
-          <Section.Root>
-            <Section.Header
-              title={t`Organization License`}
-              description={t`Your premium features are active but your Organization key is missing or invalid. This may be expected, but if not, please set a valid signed Organization key to manage your subscription, or contact support.`}
-            />
-            <Button
-              startIcon={<IconKey />}
-              onClick={openCheckoutModal}
-              variant="outline"
-            >{t`Get Organization Key`}</Button>
-          </Section.Root>
-          {activateKeySection}
-        </>
-      );
-    }
-
     if (!hasSignedEnterpriseKey) {
       return (
-        <>
-          <Section.Root>
-            <Section.Header
-              title={t`Get Organization`}
-              description={t`Unlock premium features like SSO, row-level security, and audit logs.`}
-            />
-            <Button
-              startIcon={<IconKey />}
-              onClick={openCheckoutModal}
-              variant="outline"
-            >{t`Get Organization Key`}</Button>
-          </Section.Root>
-          {activateKeySection}
-        </>
+        <Section.Root>
+          <Section.Header
+            title={t`Organization`}
+            description={t`Organization features are enabled on this server without a license key.`}
+          />
+        </Section.Root>
       );
     }
 
