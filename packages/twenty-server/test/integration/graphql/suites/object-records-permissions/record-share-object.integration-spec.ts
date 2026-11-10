@@ -4,7 +4,7 @@ import { destroyAgentChatThread } from 'test/integration/utils/destroy-agent-cha
 import { type AccessTokenService } from 'src/engine/core-modules/auth/token/services/access-token.service';
 import { AuthProviderEnum } from 'src/engine/core-modules/workspace/types/workspace.type';
 import { USER_DATA_SEED_IDS } from 'src/engine/workspace-manager/dev-seeder/core/utils/seed-users.util';
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type WorkspaceOrmManager } from 'src/engine/twenty-orm/workspace-orm.manager';
 import { type WorkspaceTransactionScope } from 'src/engine/twenty-orm/types/workspace-transaction-scope.type';

@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 import { SettingsListCard } from '@/settings/components/SettingsListCard';
 import { SettingsSsoIdentityProviderRowRightContainer } from '@/settings/security/components/sso/SettingsSsoIdentityProviderRowRightContainer';
 import { ssoIdentitiesProvidersState } from '@/settings/security/states/ssoIdentitiesProvidersState';

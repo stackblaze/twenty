@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { isNonEmptyString } from '@sniptt/guards';
 import { type ValidationRuleManifest } from 'twenty-shared/application';

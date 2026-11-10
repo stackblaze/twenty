@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { MAX_RECURRING_CHARGE_MICRO_CREDITS_PER_PERIOD } from 'twenty-shared/application';
 

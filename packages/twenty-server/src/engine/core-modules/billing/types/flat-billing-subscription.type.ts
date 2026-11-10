@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { NO_BILLING_SUBSCRIPTION } from 'src/engine/core-modules/billing/constants/no-billing-subscription.constant';
 import { type UserCreditsFallback } from 'src/engine/core-modules/billing/enums/billing-user-credits-fallback.enum';

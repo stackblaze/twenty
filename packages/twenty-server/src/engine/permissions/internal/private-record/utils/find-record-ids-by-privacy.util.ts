@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type PermissionsRowAccessEvaluationRequest } from 'src/engine/permissions/internal/combine/types/row-access-policy.type';
 import { resolvePrivateRecordState } from 'src/engine/permissions/internal/private-record/utils/resolve-private-record-state.util';

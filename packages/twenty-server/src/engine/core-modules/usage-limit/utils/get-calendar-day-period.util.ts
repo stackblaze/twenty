@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type UsagePeriod } from 'src/engine/core-modules/usage-limit/types/usage-period.type';
 

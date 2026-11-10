@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import chalk from 'chalk';
 import { Command } from 'nest-commander';

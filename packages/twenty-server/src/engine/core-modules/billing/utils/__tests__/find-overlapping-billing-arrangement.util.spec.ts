@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { BillingArrangementType } from 'src/engine/core-modules/billing/enums/billing-arrangement-type.enum';
 import { type ScopedBillingArrangementPeriod } from 'src/engine/core-modules/billing/types/scoped-billing-arrangement-period.type';

@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type PermissionsRowAccessRequest } from 'src/engine/permissions/internal/combine/types/row-access-policy.type';
 import { hasCreatedByField } from 'src/engine/permissions/internal/record-permission-repository/utils/has-created-by-field.util';

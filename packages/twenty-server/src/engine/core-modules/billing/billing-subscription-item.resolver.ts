@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { UseFilters, UsePipes } from '@nestjs/common';
 import { Parent, ResolveField } from '@nestjs/graphql';

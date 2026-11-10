@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 export enum BillingArrangementType {
   COMMITTED_SEATS = 'COMMITTED_SEATS',

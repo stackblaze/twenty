@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type RecordUsageInput } from 'src/engine/core-modules/usage/types/record-usage-input.type';
 import { type UsageConsumptionRow } from 'src/engine/core-modules/usage/types/usage-consumption-row.type';

@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type BillingPlanKey } from 'src/engine/core-modules/billing/enums/billing-plan-key.enum';
 

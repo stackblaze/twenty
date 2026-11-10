@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 export enum BillingPriceType {
   ONE_TIME = 'ONE_TIME',

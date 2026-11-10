@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 export type PermissionsRolePrincipal = {
   type: 'role';

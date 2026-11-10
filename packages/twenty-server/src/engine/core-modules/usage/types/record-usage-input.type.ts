@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type UsageEvent } from 'src/engine/core-modules/usage/types/usage-event.type';
 

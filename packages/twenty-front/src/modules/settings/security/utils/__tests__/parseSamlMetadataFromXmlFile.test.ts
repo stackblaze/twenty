@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { parseSamlMetadataFromXmlFile } from '@/settings/security/utils/parseSamlMetadataFromXmlFile';
 

@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 // Credit amounts are summed into a signed Int64 usage column and applied to the
 // cached counter through Redis INCRBY. A negative amount subtracts from the

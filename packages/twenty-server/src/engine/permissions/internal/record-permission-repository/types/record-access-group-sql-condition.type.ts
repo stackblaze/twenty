@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type SQLCondition } from 'src/engine/permissions/types/sql-condition.type';
 

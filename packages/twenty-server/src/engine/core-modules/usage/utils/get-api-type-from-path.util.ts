@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { API_TYPE_BY_PATH_PREFIX } from 'src/engine/core-modules/usage/constants/api-types.constant';
 import { type ApiType } from 'src/engine/core-modules/usage/types/api-type.type';

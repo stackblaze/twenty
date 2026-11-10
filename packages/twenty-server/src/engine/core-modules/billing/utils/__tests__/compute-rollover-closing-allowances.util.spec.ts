@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { computeRolloverClosingAllowances } from 'src/engine/core-modules/billing/utils/compute-rollover-closing-allowances.util';
 

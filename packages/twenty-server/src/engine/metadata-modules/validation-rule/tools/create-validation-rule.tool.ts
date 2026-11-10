@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { ToolCategory } from 'twenty-shared/ai';
 import { VALIDATION_RULE_EXPRESSION_SYNTAX_DESCRIPTION } from 'twenty-shared/constants';

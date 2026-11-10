@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { BillingArrangementType } from 'src/engine/core-modules/billing/enums/billing-arrangement-type.enum';
 import { type BillingArrangementPeriod } from 'src/engine/core-modules/billing/types/billing-arrangement-period.type';

@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { styled } from '@linaria/react';
 import { useContext } from 'react';

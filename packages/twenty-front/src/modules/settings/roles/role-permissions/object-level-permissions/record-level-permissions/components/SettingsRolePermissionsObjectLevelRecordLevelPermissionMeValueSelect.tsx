@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { SelectOptionIcon } from '@/ui/input/components/SelectOptionIcon';
 import { isNonEmptyString } from '@sniptt/guards';

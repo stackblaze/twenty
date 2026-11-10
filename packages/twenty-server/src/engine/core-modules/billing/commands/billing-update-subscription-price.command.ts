@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { Command, Option } from 'nest-commander';
 import { isDefined } from 'twenty-shared/utils';

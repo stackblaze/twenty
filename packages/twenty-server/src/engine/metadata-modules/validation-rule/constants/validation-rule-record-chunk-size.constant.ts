@@ -1,3 +1,3 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 export const VALIDATION_RULE_RECORD_CHUNK_SIZE = 500;

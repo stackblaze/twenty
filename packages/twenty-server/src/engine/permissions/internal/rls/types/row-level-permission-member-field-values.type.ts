@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type RowLevelPermissionPredicateValue } from 'twenty-shared/types';
 

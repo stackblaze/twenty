@@ -14,7 +14,7 @@ import { Button } from 'twenty-ui/primitives/input';
 import { useTheme, themeCssVariables } from 'twenty-ui/theme';
 import { REACT_APP_SERVER_BASE_URL } from '~/config';
 import { useCopyToClipboard } from '~/hooks/useCopyToClipboard';
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 const StyledUploadFileContainer = styled.div`
   align-items: center;

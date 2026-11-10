@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { ENTITLEMENT_KEYS_GRANTED_WITHOUT_BILLING } from 'src/engine/core-modules/billing/constants/entitlement-keys-granted-without-billing.constant';
 import { type BillingEntitlementKey } from 'src/engine/core-modules/billing/enums/billing-entitlement-key.enum';

@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { Command, CommandRunner } from 'nest-commander';
 

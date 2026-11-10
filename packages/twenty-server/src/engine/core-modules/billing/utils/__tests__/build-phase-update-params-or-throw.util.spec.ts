@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { BillingProductKey } from 'src/engine/core-modules/billing/enums/billing-product-key.enum';
 import { buildPhaseUpdateParamsOrThrow } from 'src/engine/core-modules/billing/utils/build-phase-update-params-or-throw.util';

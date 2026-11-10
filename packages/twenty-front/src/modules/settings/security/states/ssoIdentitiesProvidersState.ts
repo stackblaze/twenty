@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type SsoIdentityProvider } from '@/settings/security/types/SsoIdentityProvider';
 import { createAtomState } from '@/ui/utilities/state/jotai/utils/createAtomState';

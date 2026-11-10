@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type PrivateRecordState } from 'src/engine/permissions/internal/private-record/types/private-record-state.type';
 import { type PrivateRecordStateRow } from 'src/engine/permissions/internal/record-permission-repository/types/private-record-state-row.type';

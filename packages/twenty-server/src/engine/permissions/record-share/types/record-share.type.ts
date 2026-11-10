@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type RecordShareInput } from 'src/engine/permissions/record-share/types/record-share-input.type';
 

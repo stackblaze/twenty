@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { BillingPlanKey } from 'src/engine/core-modules/billing/enums/billing-plan-key.enum';
 import { findDefaultPlanKey } from 'src/engine/core-modules/billing/utils/find-default-plan-key.util';

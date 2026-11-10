@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type EventLogTable } from 'twenty-shared/types';
 import { isNonEmptyArray } from 'twenty-shared/utils';

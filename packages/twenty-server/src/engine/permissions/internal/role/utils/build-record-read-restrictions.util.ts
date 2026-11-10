@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { canReachSomeRecords, isDefined } from 'twenty-shared/utils';
 

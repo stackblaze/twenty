@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { shiftUtcMonths } from 'src/engine/core-modules/billing/utils/shift-utc-months.util';
 

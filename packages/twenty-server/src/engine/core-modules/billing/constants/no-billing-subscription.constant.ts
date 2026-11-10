@@ -1,3 +1,3 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 export const NO_BILLING_SUBSCRIPTION = 'NO_BILLING_SUBSCRIPTION';

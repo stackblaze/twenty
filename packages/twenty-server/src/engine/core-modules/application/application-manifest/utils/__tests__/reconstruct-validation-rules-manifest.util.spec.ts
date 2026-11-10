@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { reconstructValidationRulesManifest } from 'src/engine/core-modules/application/application-manifest/utils/reconstruct-validation-rules-manifest.util';
 import { ApplicationExportCoverageStatus } from 'src/engine/core-modules/application/enums/application-export-coverage-status.enum';

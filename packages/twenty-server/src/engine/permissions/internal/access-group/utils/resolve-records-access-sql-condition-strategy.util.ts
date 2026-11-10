@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type RecordsAccessSQLConditionStrategy } from 'src/engine/permissions/internal/access-group/types/records-access-sql-condition-strategy.type';
 import { areRecordAccessGroupsEnabled } from 'src/engine/permissions/internal/access-group/utils/are-record-access-groups-enabled.util';

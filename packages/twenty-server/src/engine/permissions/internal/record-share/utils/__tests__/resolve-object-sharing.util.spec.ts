@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { STANDARD_OBJECTS } from 'twenty-shared/metadata';
 import { FeatureFlagKey } from 'twenty-shared/types';

@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { buildRecordValidationRuleViolationsMessage } from 'src/engine/metadata-modules/validation-rule/utils/build-record-validation-rule-violations-message.util';
 

@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { useRedirect } from '@/domain-manager/hooks/useRedirect';
 import { getToastOptionsFromError } from '@/error-handler/utils/getToastOptionsFromError';

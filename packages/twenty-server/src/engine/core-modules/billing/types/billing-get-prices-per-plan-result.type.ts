@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type BillingPriceEntity } from 'src/engine/core-modules/billing/entities/billing-price.entity';
 

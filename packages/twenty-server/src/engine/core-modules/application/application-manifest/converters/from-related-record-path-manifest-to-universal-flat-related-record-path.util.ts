@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type RelatedRecordPathManifest } from 'twenty-shared/application';
 

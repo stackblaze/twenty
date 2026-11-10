@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { IS_PRIVATE_COLUMN_DEFINITION } from 'src/engine/permissions/internal/private-record/constants/is-private-column-definition.constant';
 import { buildPrivateRecordIndexDefinition } from 'src/engine/permissions/internal/private-record/utils/build-private-record-index-definition.util';

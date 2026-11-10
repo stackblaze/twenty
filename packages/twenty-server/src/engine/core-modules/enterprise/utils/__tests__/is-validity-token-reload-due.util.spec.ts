@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { ENTERPRISE_VALIDITY_TOKEN_RELOAD_INTERVAL_MS } from 'src/engine/core-modules/enterprise/constants/enterprise-validity-token-reload-interval.constant';
 import { ENTERPRISE_VALIDITY_TOKEN_RELOAD_RETRY_INTERVAL_MS } from 'src/engine/core-modules/enterprise/constants/enterprise-validity-token-reload-retry-interval.constant';

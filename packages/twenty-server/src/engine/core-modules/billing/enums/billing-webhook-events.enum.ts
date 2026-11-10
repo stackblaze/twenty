@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 export enum BillingWebhookEvent {
   CUSTOMER_SUBSCRIPTION_CREATED = 'customer.subscription.created',

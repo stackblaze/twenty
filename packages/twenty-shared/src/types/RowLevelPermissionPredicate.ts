@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type RowLevelPermissionPredicateOperand } from '@/types/RowLevelPermissionPredicateOperand';
 import { type RowLevelPermissionPredicateValue } from '@/types/RowLevelPermissionPredicateValue';

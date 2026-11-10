@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 // Postgres returns bigint as a string; Number() is safe because getActiveCreditsMicro asserts totals stay below 2^53.
 export const bigintColumnTransformer = {

@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import gql from 'graphql-tag';
 import { RELATED_RECORD_PATH_GQL_FIELDS } from 'test/integration/metadata/suites/related-record-path/utils/related-record-path-gql-fields.constant';

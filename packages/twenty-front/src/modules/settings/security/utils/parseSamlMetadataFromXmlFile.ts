@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { t } from '@lingui/core/macro';
 import { z } from 'zod';

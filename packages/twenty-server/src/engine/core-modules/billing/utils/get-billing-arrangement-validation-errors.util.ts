@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { isNonEmptyString, isString } from '@sniptt/guards';
 import { isDefined } from 'twenty-shared/utils';

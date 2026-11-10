@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { EVERYONE_PRINCIPAL_ID } from 'twenty-shared/constants';
 import {

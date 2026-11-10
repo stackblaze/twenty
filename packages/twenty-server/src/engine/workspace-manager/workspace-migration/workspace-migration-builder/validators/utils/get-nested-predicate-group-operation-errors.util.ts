@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { msg, t } from '@lingui/core/macro';
 import { isDefined } from 'twenty-shared/utils';

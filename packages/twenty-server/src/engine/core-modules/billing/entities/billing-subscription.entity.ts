@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
 import graphqlTypeJson from 'graphql-type-json';

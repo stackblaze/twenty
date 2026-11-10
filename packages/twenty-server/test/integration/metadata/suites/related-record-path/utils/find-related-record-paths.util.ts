@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { findRelatedRecordPathsQueryFactory } from 'test/integration/metadata/suites/related-record-path/utils/find-related-record-paths-query-factory.util';
 import { type RelatedRecordPathResponse } from 'test/integration/metadata/suites/related-record-path/utils/related-record-path-gql-fields.constant';

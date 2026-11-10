@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { type ValidationRuleManifest } from 'twenty-shared/application';
 import { isDefined } from 'twenty-shared/utils';

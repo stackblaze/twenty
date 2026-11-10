@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { findSingleCreateRowLevelPermissionRule } from '@/object-metadata/utils/findSingleCreateRowLevelPermissionRule';
 import { useObjectMetadataItems } from '@/object-metadata/hooks/useObjectMetadataItems';

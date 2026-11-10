@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { ENTERPRISE_DEV_VALIDITY_TOKEN } from 'src/engine/core-modules/enterprise/constants/enterprise-public-key.constant';
 import { verifyEnterpriseJwt } from 'src/engine/core-modules/enterprise/utils/verify-enterprise-jwt.util';

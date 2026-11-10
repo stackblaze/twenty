@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 import { msg } from '@lingui/core/macro';
 import Stripe from 'stripe';

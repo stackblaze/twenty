@@ -1,4 +1,4 @@
-/* @license Enterprise */
+/* Licensed under AGPLv3 */
 
 export const RELATED_RECORD_PATH_GQL_FIELDS = `
   id
