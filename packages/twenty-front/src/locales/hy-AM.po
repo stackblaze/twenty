@@ -14367,13 +14367,10 @@ msgstr "Ստանալ ավելի շատ կրեդիտներ"
 #: src/modules/settings/enterprise/components/EnterprisePlanModal.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Get Organization"
 msgstr "Ստանալ Կազմակերպություն"
 
 #. js-lingui-id: MZe3+J
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Get Organization Key"
@@ -21697,6 +21694,7 @@ msgstr "Դասավորված ցուցակ"
 #: src/modules/settings/enterprise/components/OrganizationAdornment.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
+#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Organization"
 msgstr "Կազմակերպություն"
 
@@ -21710,13 +21708,17 @@ msgstr "Կազմակերպություն"
 msgid "Organization feature"
 msgstr "Կազմակերպության գործառույթ"
 
+#. js-lingui-id: U6npCG
+#: src/pages/settings/enterprise/SettingsEnterprise.tsx
+msgid "Organization features are enabled on this server without a license key."
+msgstr ""
+
 #. js-lingui-id: b8dX3V
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Organization key transferred to this server"
 msgstr "Կազմակերպության բանալին փոխանցվել է այս սերվերին"
 
 #. js-lingui-id: MoJjhq
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
@@ -30847,11 +30849,6 @@ msgstr "Անսահմանափակ"
 msgid "Unlisted"
 msgstr "Չցուցակագրված"
 
-#. js-lingui-id: 8vc1Dy
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
-msgid "Unlock premium features like SSO, row-level security, and audit logs."
-msgstr "Բացեք պրեմիում հնարավորություններ, ինչպիսիք են SSO-ն, տողային մակարդակի անվտանգությունը և աուդիտի մատյանները։"
-
 #. js-lingui-id: Te2H8x
 #: src/modules/settings/developers/components/SettingsApiKeysFieldItemTableRow.tsx
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
@@ -33645,11 +33642,6 @@ msgstr "Ձեր փաթեթը կփոխվի {planLabel}-ի՝ {0}-ին, ձեր ըն�
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Your premium features are active"
 msgstr "Ձեր պրեմիում հնարավորություններն ակտիվ են"
-
-#. js-lingui-id: VRFEn9
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
-msgid "Your premium features are active but your Organization key is missing or invalid. This may be expected, but if not, please set a valid signed Organization key to manage your subscription, or contact support."
-msgstr "Ձեր պրեմիում հնարավորություններն ակտիվ են, սակայն ձեր Կազմակերպության բանալին բացակայում է կամ անվավեր է։ Սա կարող է սպասելի լինել, սակայն եթե այդպես չէ, խնդրում ենք սահմանել վավեր ստորագրված Կազմակերպության բանալի՝ ձեր բաժանորդագրությունը կառավարելու համար, կամ կապ հաստատեք աջակցման ծառայության հետ։"
 
 #. js-lingui-id: BkmgMC
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx

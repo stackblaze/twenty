@@ -14367,13 +14367,10 @@ msgstr "Ottieni più crediti"
 #: src/modules/settings/enterprise/components/EnterprisePlanModal.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Get Organization"
 msgstr "Ottieni Organizzazione"
 
 #. js-lingui-id: MZe3+J
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Get Organization Key"
@@ -21697,6 +21694,7 @@ msgstr ""
 #: src/modules/settings/enterprise/components/OrganizationAdornment.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
+#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Organization"
 msgstr "Organizzazione"
 
@@ -21710,13 +21708,17 @@ msgstr "Organizzazione"
 msgid "Organization feature"
 msgstr "Funzionalità Organizzazione"
 
+#. js-lingui-id: U6npCG
+#: src/pages/settings/enterprise/SettingsEnterprise.tsx
+msgid "Organization features are enabled on this server without a license key."
+msgstr ""
+
 #. js-lingui-id: b8dX3V
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Organization key transferred to this server"
 msgstr "Chiave Organizzazione trasferita a questo server"
 
 #. js-lingui-id: MoJjhq
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
@@ -30849,11 +30851,6 @@ msgstr "Illimitato"
 msgid "Unlisted"
 msgstr "Non in elenco"
 
-#. js-lingui-id: 8vc1Dy
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
-msgid "Unlock premium features like SSO, row-level security, and audit logs."
-msgstr "Sblocca funzionalità premium come SSO, sicurezza a livello di riga e registri di controllo."
-
 #. js-lingui-id: Te2H8x
 #: src/modules/settings/developers/components/SettingsApiKeysFieldItemTableRow.tsx
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
@@ -33647,11 +33644,6 @@ msgstr "Il tuo piano passa a {planLabel} il {0}, alla fine del tuo attuale perio
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Your premium features are active"
 msgstr "Le tue funzionalità premium sono attive"
-
-#. js-lingui-id: VRFEn9
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
-msgid "Your premium features are active but your Organization key is missing or invalid. This may be expected, but if not, please set a valid signed Organization key to manage your subscription, or contact support."
-msgstr "Le tue funzionalità premium sono attive ma la tua chiave Organizzazione manca o non è valida. Questo potrebbe essere normale; in caso contrario, imposta una chiave Organizzazione firmata valida per gestire il tuo abbonamento oppure contatta l'assistenza."
 
 #. js-lingui-id: BkmgMC
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx

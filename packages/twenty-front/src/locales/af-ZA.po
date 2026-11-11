@@ -14367,13 +14367,10 @@ msgstr "Kry meer krediete"
 #: src/modules/settings/enterprise/components/EnterprisePlanModal.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Get Organization"
 msgstr "Kry Organisasie"
 
 #. js-lingui-id: MZe3+J
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Get Organization Key"
@@ -21697,6 +21694,7 @@ msgstr ""
 #: src/modules/settings/enterprise/components/OrganizationAdornment.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
+#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Organization"
 msgstr "Organisasie"
 
@@ -21710,13 +21708,17 @@ msgstr "Organisasie"
 msgid "Organization feature"
 msgstr "Organisasiekenmerk"
 
+#. js-lingui-id: U6npCG
+#: src/pages/settings/enterprise/SettingsEnterprise.tsx
+msgid "Organization features are enabled on this server without a license key."
+msgstr ""
+
 #. js-lingui-id: b8dX3V
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Organization key transferred to this server"
 msgstr "Organisasiesleutel na hierdie bediener oorgedra"
 
 #. js-lingui-id: MoJjhq
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
@@ -30847,11 +30849,6 @@ msgstr "Onbeperk"
 msgid "Unlisted"
 msgstr "Ongepubliseer"
 
-#. js-lingui-id: 8vc1Dy
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
-msgid "Unlock premium features like SSO, row-level security, and audit logs."
-msgstr "Ontsluit premiumfunksies soos SSO, sekuriteit op ryvlak en ouditlogboeke."
-
 #. js-lingui-id: Te2H8x
 #: src/modules/settings/developers/components/SettingsApiKeysFieldItemTableRow.tsx
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
@@ -33645,11 +33642,6 @@ msgstr "Jou plan skakel op {0} oor na {planLabel}, aan die einde van jou huidige
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Your premium features are active"
 msgstr "Jou premiumfunksies is aktief"
-
-#. js-lingui-id: VRFEn9
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
-msgid "Your premium features are active but your Organization key is missing or invalid. This may be expected, but if not, please set a valid signed Organization key to manage your subscription, or contact support."
-msgstr "Jou premiumfunksies is aktief, maar jou Organisasiesleutel ontbreek of is ongeldig. Dit kan verwag word, maar indien nie, stel asseblief 'n geldige, ondertekende Organisasiesleutel in om jou intekening te bestuur, of kontak ondersteuning."
 
 #. js-lingui-id: BkmgMC
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx

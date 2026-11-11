@@ -14367,13 +14367,10 @@ msgstr "Získat více kreditů"
 #: src/modules/settings/enterprise/components/EnterprisePlanModal.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Get Organization"
 msgstr "Získat Organizaci"
 
 #. js-lingui-id: MZe3+J
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Get Organization Key"
@@ -21697,6 +21694,7 @@ msgstr ""
 #: src/modules/settings/enterprise/components/OrganizationAdornment.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
+#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Organization"
 msgstr "Organizace"
 
@@ -21710,13 +21708,17 @@ msgstr "Organizace"
 msgid "Organization feature"
 msgstr "Funkce Organizace"
 
+#. js-lingui-id: U6npCG
+#: src/pages/settings/enterprise/SettingsEnterprise.tsx
+msgid "Organization features are enabled on this server without a license key."
+msgstr ""
+
 #. js-lingui-id: b8dX3V
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Organization key transferred to this server"
 msgstr "Klíč Organizace byl na tento server přenesen"
 
 #. js-lingui-id: MoJjhq
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
@@ -30847,11 +30849,6 @@ msgstr "Neomezené"
 msgid "Unlisted"
 msgstr "Neveřejné"
 
-#. js-lingui-id: 8vc1Dy
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
-msgid "Unlock premium features like SSO, row-level security, and audit logs."
-msgstr "Odemkněte prémiové funkce, jako je SSO, zabezpečení na úrovni řádků a záznamy auditu."
-
 #. js-lingui-id: Te2H8x
 #: src/modules/settings/developers/components/SettingsApiKeysFieldItemTableRow.tsx
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
@@ -33645,11 +33642,6 @@ msgstr "Váš plán se změní na {planLabel} dne {0}, na konci aktuálního fak
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Your premium features are active"
 msgstr "Vaše prémiové funkce jsou aktivní"
-
-#. js-lingui-id: VRFEn9
-#: src/pages/settings/enterprise/SettingsEnterprise.tsx
-msgid "Your premium features are active but your Organization key is missing or invalid. This may be expected, but if not, please set a valid signed Organization key to manage your subscription, or contact support."
-msgstr "Vaše prémiové funkce jsou aktivní, ale váš klíč Organizace chybí nebo je neplatný. To může být očekávané, ale pokud ne, nastavte prosím platný podepsaný klíč Organizace pro správu svého předplatného nebo kontaktujte podporu."
 
 #. js-lingui-id: BkmgMC
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
