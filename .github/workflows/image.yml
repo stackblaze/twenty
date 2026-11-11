@@ -52,7 +52,7 @@ jobs:
           labels: |
             org.opencontainers.image.source=https://github.com/stackblaze/twenty
           build-args: |
-            APP_VERSION=${{ steps.ver.outputs.short }}
+            APP_VERSION=0.2.1
 
       - name: Disk after build
         if: always()
